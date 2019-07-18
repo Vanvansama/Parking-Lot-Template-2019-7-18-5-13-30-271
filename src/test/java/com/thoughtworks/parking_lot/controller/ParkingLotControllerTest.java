@@ -37,4 +37,5 @@ public class ParkingLotControllerTest {
         resultActions.andExpect(status().isOk()).andExpect(jsonPath("$.name",is("stefan")));
     }
 
+
 }
