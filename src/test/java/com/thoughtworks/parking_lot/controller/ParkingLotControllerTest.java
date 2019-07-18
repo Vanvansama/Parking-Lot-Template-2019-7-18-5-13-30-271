@@ -12,6 +12,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
 import static org.hamcrest.core.Is.is;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -30,10 +31,10 @@ public class ParkingLotControllerTest {
     @Test
     void should_return_parking_lot_when_save_given_parking_lot() throws Exception {
         ParkingLot parkingLot = new ParkingLot("stefan",50,20);
-        when(parkingLotRepository.save(parkingLot)).thenReturn(parkingLot);
+        when(parkingLotRepository.save(any())).thenReturn(parkingLot);
 
         ResultActions resultActions = mockMvc.perform(post("/parking-lot"));
-        resultActions.andExpect(status().isOk()).andExpect(jsonPath("$.id",is(parkingLot.getId())));
+        resultActions.andExpect(status().isOk()).andExpect(jsonPath("$.name",is("stefan")));
     }
 
 }

@@ -3,7 +3,7 @@ package com.thoughtworks.parking_lot.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "parking-lot")
+@Table(name = "parkinglot")
 public class ParkingLot {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

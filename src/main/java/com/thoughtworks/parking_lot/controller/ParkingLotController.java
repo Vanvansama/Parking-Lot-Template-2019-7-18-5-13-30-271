@@ -13,6 +13,6 @@ public class ParkingLotController {
 
     @PostMapping("/parking-lot")
     public ParkingLot save(ParkingLot parkingLot){
-        return null;
+        return parkingLotRepository.save(parkingLot);
     }
 }
