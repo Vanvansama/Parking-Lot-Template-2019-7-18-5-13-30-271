@@ -22,8 +22,9 @@ public class ParkingOrderService {
             parkingLots.setCapacity(position - 1);
             parkingLotService.update(parkingLots.getId(), parkingLots);
             return parkingOrderRepository.save(parkingOrders);
+        }else {
+            throw new RuntimeException("停车场已满");
         }
-        return null;
     }
 
     public ParkingOrders fetch(String carId) {
