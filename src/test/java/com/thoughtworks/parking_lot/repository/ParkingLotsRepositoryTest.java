@@ -36,4 +36,22 @@ class ParkingLotsRepositoryTest {
         Assertions.assertEquals(parkingLotsSave, parkingLotsGet);
     }
 
+    @Test
+    void should_return_void_when_delete_given_parking_lot(){
+        ParkingLots parkingLots = new ParkingLots("stefan",50,20);
+        ParkingLots parkingLotsSave = parkingLotRepository.save(parkingLots);
+        parkingLotRepository.deleteById(parkingLotsSave.getId());
+
+        Assertions.assertEquals(0,parkingLotRepository.findAll().size());
+    }
+
+    @Test
+    void should_return_parking_lot_when_findByPage_given_parkingId(){
+        ParkingLots parkingLots = new ParkingLots("stefan",50,20);
+        ParkingLots parkingLotsSave = parkingLotRepository.save(parkingLots);
+        ParkingLots parkingLotsGet = parkingLotRepository.findById(parkingLotsSave.getId()).orElse(null);
+
+        Assertions.assertEquals(parkingLotsGet,parkingLotsSave);
+    }
+
 }
