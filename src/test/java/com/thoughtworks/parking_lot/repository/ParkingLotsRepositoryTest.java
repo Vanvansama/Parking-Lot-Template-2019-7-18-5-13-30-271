@@ -1,14 +1,16 @@
 package com.thoughtworks.parking_lot.repository;
 
-import com.thoughtworks.parking_lot.model.ParkingLot;
+import com.thoughtworks.parking_lot.model.ParkingLots;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Create with IDEA
@@ -19,18 +21,19 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 @DataJpaTest
 @ExtendWith(SpringExtension.class)
-class ParkingLotRepositoryTest {
+class ParkingLotsRepositoryTest {
 
     @Autowired
     private ParkingLotRepository parkingLotRepository;
 
     @Test
     void should_return_parking_lot_when_save_given_parking_lot(){
-        ParkingLot parkingLot = new ParkingLot("stefan",50,20);
-        ParkingLot parkingLotSave = parkingLotRepository.save(parkingLot);
+        ParkingLots parkingLots = new ParkingLots("stefan",50,20);
+        ParkingLots parkingLotsSave = parkingLotRepository.save(parkingLots);
 
-        ParkingLot parkingLotGet = parkingLotRepository.findById(parkingLotSave.getId()).orElse(null);
+        ParkingLots parkingLotsGet = parkingLotRepository.findById(parkingLotsSave.getId()).orElse(null);
 
-        Assertions.assertEquals(parkingLotSave, parkingLotGet);
+        Assertions.assertEquals(parkingLotsSave, parkingLotsGet);
     }
+
 }
